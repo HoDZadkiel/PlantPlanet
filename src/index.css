@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-plant-primary: #2d6a4f;
+  --color-plant-secondary: #52b788;
+  --color-plant-light: #d8f3dc;
+  --color-plant-dark: #1b4332;
+  --color-plant-accent: #f4a261;
+  --font-['Playfair_Display']: 'Playfair Display', serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800;
+  }
+  h1, h2, h3, h4 {
+    @apply font-['Playfair_Display'] font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-plant-primary text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-plant-dark transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.97];
+  }
+  .btn-secondary {
+    @apply bg-white text-plant-primary px-5 py-2.5 rounded-xl font-semibold border-2 border-plant-primary hover:bg-plant-light transition-all duration-200 active:scale-[0.97];
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-green-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer;
+  }
+  .card-title {
+    @apply text-lg font-semibold text-gray-800 hover:text-plant-primary transition-colors;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-plant-primary focus:ring-2 focus:ring-plant-primary/20 outline-none transition-all duration-200 text-gray-800 bg-white placeholder:text-gray-400;
+  }
+  .tag {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-plant-light text-plant-primary;
+  }
+}
