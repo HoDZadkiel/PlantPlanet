@@ -64,7 +64,7 @@ const Navbar = () => {
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <Link
-            to="/profile"
+            to="/community/1"
             className="flex items-center gap-2.5 px-4 py-2.5 bg-plant-primary text-white rounded-xl text-sm font-semibold hover:bg-plant-dark dark:hover:bg-green-600 transition-all"
           >
             <span className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center text-sm">🌱</span>
@@ -132,7 +132,7 @@ const Navbar = () => {
 
             <div className="border-t border-green-100 mt-6 pt-6 dark:border-gray-700">
               <Link
-                to="/profile"
+                to="/community/1"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 bg-plant-primary text-white rounded-xl text-sm font-semibold"
               >

@@ -6,6 +6,7 @@ import PlantLibraryPage from './pages/PlantLibraryPage'
 import JournalPage from './pages/JournalPage'
 import CommunityPage from './pages/CommunityPage'
 import PostPage from './pages/PostPage'
+import ProfilePage from './pages/ProfilePage'
 import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/plants" element={<PlantLibraryPage />} />
             <Route path="/journal" element={<JournalPage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/community/:userId" element={<ProfilePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
