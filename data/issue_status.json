@@ -19,6 +19,15 @@
       "branch": "issue-7-hero-gradient-lighter",
       "preview_url": "https://plant-planet-git-issue-7-hero-gradient-lighter-tseng3.vercel.app",
       "processed_at": "2026-07-25"
+    },
+    "9": {
+      "status": "merged",
+      "pr": "10",
+      "branch": "issue-9-forum-trending-title",
+      "preview_url": "https://plant-planet-git-issue-9-forum-trending-title-tseng3.vercel.app",
+      "processed_at": "2026-07-25",
+      "merged_at": "2026-07-25",
+      "ui_validation": "passed (Vercel Ready confirmed)"
     }
   }
 }
