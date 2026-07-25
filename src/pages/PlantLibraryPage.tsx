@@ -32,13 +32,13 @@ const PlantLibraryPage = () => {
   const careLevelColor = (level: string) => {
     switch (level) {
       case 'easy':
-        return 'bg-green-100 text-green-700'
+        return 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
       case 'medium':
-        return 'bg-amber-100 text-amber-700'
+        return 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'
       case 'hard':
-        return 'bg-red-100 text-red-700'
+        return 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
       default:
-        return 'bg-gray-100 text-gray-700'
+        return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300'
     }
   }
 
@@ -46,8 +46,8 @@ const PlantLibraryPage = () => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">植物圖鑑</h1>
-        <p className="text-gray-500">瀏覽常見室內與戶外植物的照護指南</p>
+        <h1 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">植物圖鑑</h1>
+        <p className="text-gray-500 dark:text-gray-400">瀏覽常見室內與戶外植物的照護指南</p>
       </div>
 
       {/* Search and filters */}
@@ -92,23 +92,23 @@ const PlantLibraryPage = () => {
               </div>
             </div>
             <div className="p-5">
-              <h3 className="font-semibold text-gray-800 mb-0.5">{plant.name}</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-0.5">{plant.name}</h3>
               <p className="text-xs text-gray-400 italic mb-3">{plant.scientificName}</p>
-              <p className="text-sm text-gray-500 mb-4 line-clamp-2">{plant.description}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">{plant.description}</p>
               <div className="grid grid-cols-2 gap-2 mb-4 text-xs">
-                <div className="flex items-center gap-1.5 text-gray-500">
+                <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                   <Droplets size={14} className="text-blue-400" />
                   {plant.waterNeeds}
                 </div>
-                <div className="flex items-center gap-1.5 text-gray-500">
+                <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                   <Sun size={14} className="text-amber-400" />
                   {plant.lightNeeds}
                 </div>
-                <div className="flex items-center gap-1.5 text-gray-500">
+                <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                   <Thermometer size={14} className="text-red-400" />
                   {plant.tempRange}
                 </div>
-                <div className="flex items-center gap-1.5 text-gray-500">
+                <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                   <Leaf size={14} className="text-green-400" />
                   {plant.humidity}
                 </div>
@@ -120,7 +120,7 @@ const PlantLibraryPage = () => {
               </div>
               <button
                 onClick={() => setSelectedPlant(plant)}
-                className="w-full flex items-center justify-center gap-2 text-plant-primary font-medium text-sm hover:bg-plant-light rounded-xl py-2.5 transition-all"
+                className="w-full flex items-center justify-center gap-2 text-plant-primary font-medium text-sm hover:bg-plant-light dark:hover:bg-gray-700 rounded-xl py-2.5 transition-all"
               >
                 查看詳細指南
                 <ArrowRight size={14} />
@@ -134,8 +134,8 @@ const PlantLibraryPage = () => {
       {filteredPlants.length === 0 && (
         <div className="text-center py-16">
           <div className="text-6xl mb-4">🌿</div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">找不到植物</h3>
-          <p className="text-gray-500">試試調整搜尋條件或篩選器。</p>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">找不到植物</h3>
+          <p className="text-gray-500 dark:text-gray-400">試試調整搜尋條件或篩選器。</p>
         </div>
       )}
 
@@ -146,7 +146,7 @@ const PlantLibraryPage = () => {
           onClick={() => setSelectedPlant(null)}
         >
           <div
-            className="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto dark:bg-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -157,10 +157,10 @@ const PlantLibraryPage = () => {
             <div className="p-6">
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-gray-800">
+                  <h2 className="text-2xl font-display font-bold text-gray-800 dark:text-white">
                     {selectedPlant.name}
                   </h2>
-                  <p className="text-sm text-gray-400 italic">
+                  <p className="text-sm text-gray-400 italic dark:text-gray-500">
                     {selectedPlant.scientificName}
                   </p>
                 </div>
@@ -173,43 +173,43 @@ const PlantLibraryPage = () => {
                 </span>
               </div>
 
-              <p className="text-gray-600 mb-6">{selectedPlant.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{selectedPlant.description}</p>
 
               <div className="space-y-3 mb-6">
-                <h3 className="font-semibold text-gray-800">照護需求</h3>
+                <h3 className="font-semibold text-gray-800 dark:text-white">照護需求</h3>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="flex items-center gap-3 p-3 bg-green-50 rounded-xl">
+                  <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-gray-700 rounded-xl">
                     <Droplets size={20} className="text-blue-500" />
                     <div>
-                      <div className="text-xs text-gray-500">澆水</div>
-                      <div className="text-sm font-medium text-gray-800">
+                      <div className="text-xs text-gray-500 dark:text-gray-400">澆水</div>
+                      <div className="text-sm font-medium text-gray-800 dark:text-white">
                         {selectedPlant.waterNeeds}
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-amber-50 rounded-xl">
+                  <div className="flex items-center gap-3 p-3 bg-amber-50 dark:bg-gray-700 rounded-xl">
                     <Sun size={20} className="text-amber-500" />
                     <div>
-                      <div className="text-xs text-gray-500">光照</div>
-                      <div className="text-sm font-medium text-gray-800">
+                      <div className="text-xs text-gray-500 dark:text-gray-400">光照</div>
+                      <div className="text-sm font-medium text-gray-800 dark:text-white">
                         {selectedPlant.lightNeeds}
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-red-50 rounded-xl">
+                  <div className="flex items-center gap-3 p-3 bg-red-50 dark:bg-gray-700 rounded-xl">
                     <Thermometer size={20} className="text-red-500" />
                     <div>
-                      <div className="text-xs text-gray-500">溫度</div>
-                      <div className="text-sm font-medium text-gray-800">
+                      <div className="text-xs text-gray-500 dark:text-gray-400">溫度</div>
+                      <div className="text-sm font-medium text-gray-800 dark:text-white">
                         {selectedPlant.tempRange}
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl">
+                  <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-gray-700 rounded-xl">
                     <Leaf size={20} className="text-green-500" />
                     <div>
-                      <div className="text-xs text-gray-500">濕度</div>
-                      <div className="text-sm font-medium text-gray-800">
+                      <div className="text-xs text-gray-500 dark:text-gray-400">濕度</div>
+                      <div className="text-sm font-medium text-gray-800 dark:text-white">
                         {selectedPlant.humidity}
                       </div>
                     </div>
