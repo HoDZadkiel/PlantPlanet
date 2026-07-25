@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind v4 class-based dark mode: toggled by .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-plant-primary: #2d6a4f;
   --color-plant-secondary: #52b788;
