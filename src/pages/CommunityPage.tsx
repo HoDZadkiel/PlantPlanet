@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Award, TrendingUp, MessageCircle } from 'lucide-react'
 import { topUsers } from '../data/mockData'
 
@@ -47,9 +48,10 @@ const CommunityPage = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {topUsers.map((user, index) => (
-            <div
+            <Link
               key={user.id}
-              className={`card p-6 ${index === 0 ? 'ring-2 ring-plant-primary' : ''}`}
+              to={`/community/${user.id}`}
+              className={`card p-6 block ${index === 0 ? 'ring-2 ring-plant-primary' : ''} hover:-translate-y-0.5 transition-transform`}
             >
               <div className="flex items-center gap-4 mb-4">
                 {index === 0 && (
@@ -97,7 +99,7 @@ const CommunityPage = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
