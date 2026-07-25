@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-plant-dark via-plant-primary to-plant-secondary py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 py-20 md:py-32">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 text-7xl animate-pulse delay-200">🌿</div>
