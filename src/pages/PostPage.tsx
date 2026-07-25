@@ -46,8 +46,8 @@ const PostPage = () => {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div className="text-6xl mb-4">🌿</div>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-2">貼文不存在</h2>
-        <p className="text-gray-500">該貼文可能已被刪除或不存在。</p>
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">貼文不存在</h2>
+        <p className="text-gray-500 dark:text-gray-400">該貼文可能已被刪除或不存在。</p>
       </div>
     )
   }
@@ -59,7 +59,7 @@ const PostPage = () => {
       {/* Back button */}
       <button
         onClick={() => window.history.back()}
-        className="flex items-center gap-2 text-gray-500 hover:text-plant-primary mb-6 transition-colors"
+        className="flex items-center gap-2 text-gray-500 hover:text-plant-primary dark:text-gray-400 dark:hover:text-green-300 mb-6 transition-colors"
       >
         <ArrowLeft size={18} />
         返回論壇
@@ -76,15 +76,15 @@ const PostPage = () => {
           />
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-xl font-semibold text-gray-800">{post.author}</h1>
+              <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{post.author}</h1>
               {post.isPinned && (
-                <span className="flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full dark:bg-amber-900/30 dark:text-amber-400">
                   <Pin size={10} />
                   置頂
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400">
+            <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
               <span>{category?.icon} {category?.name}</span>
               <span>•</span>
               <span>{new Date(post.date).toLocaleDateString('zh-TW', {
@@ -97,12 +97,12 @@ const PostPage = () => {
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl font-display font-bold text-gray-800 mb-4">
+        <h2 className="text-2xl font-display font-bold text-gray-800 dark:text-white mb-4">
           {post.title}
         </h2>
 
         {/* Content */}
-        <div className="text-gray-600 leading-relaxed mb-6 whitespace-pre-line">
+        <div className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 whitespace-pre-line">
           {post.content}
         </div>
 
@@ -122,14 +122,14 @@ const PostPage = () => {
         )}
 
         {/* Actions */}
-        <div className="flex items-center justify-between pt-6 border-t border-green-50">
+        <div className="flex items-center justify-between pt-6 border-t border-green-50 dark:border-gray-700">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLiked(!liked)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 liked
-                  ? 'bg-red-50 text-red-600'
-                  : 'bg-gray-50 text-gray-500 hover:bg-red-50 hover:text-red-600'
+                  ? 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400'
+                  : 'bg-gray-50 text-gray-500 hover:bg-red-50 hover:text-red-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-red-900/30 dark:hover:text-red-400'
               }`}
             >
               <ThumbsUp size={16} />
@@ -137,14 +137,14 @@ const PostPage = () => {
             </button>
             <button
               onClick={() => setShowComments(!showComments)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-50 text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-50 text-gray-500 hover:bg-blue-50 hover:text-blue-600 transition-all dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-blue-900/30 dark:hover:text-blue-400"
             >
               <MessageCircle size={16} />
               {post.replies}
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-50 text-gray-500 hover:bg-gray-100 transition-all">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-50 text-gray-500 hover:bg-gray-100 transition-all dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">
               <Share2 size={16} />
               分享
             </button>
@@ -153,7 +153,7 @@ const PostPage = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 saved
                   ? 'bg-plant-primary text-white'
-                  : 'bg-gray-50 text-gray-500 hover:bg-plant-light hover:text-plant-primary'
+                  : 'bg-gray-50 text-gray-500 hover:bg-plant-light hover:text-plant-primary dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-green-300'
               }`}
             >
               <Bookmark size={16} />
@@ -166,14 +166,14 @@ const PostPage = () => {
       {/* Comments section */}
       {showComments && (
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
             <MessageCircle size={18} className="text-plant-primary" />
             回覆 ({mockComments.length})
           </h3>
 
           {/* Comment input */}
           <div className="card p-4 mb-6 flex items-start gap-3">
-            <div className="w-10 h-10 rounded-full bg-plant-light flex items-center justify-center flex-shrink-0 text-lg">
+            <div className="w-10 h-10 rounded-full bg-plant-light dark:bg-green-900/40 flex items-center justify-center flex-shrink-0 text-lg">
               🌱
             </div>
             <div className="flex-1">
@@ -206,23 +206,23 @@ const PostPage = () => {
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-gray-800 text-sm">{comment.author}</span>
+                      <span className="font-semibold text-gray-800 dark:text-white text-sm">{comment.author}</span>
                       {comment.isOP && (
-                        <span className="text-xs font-medium text-plant-primary bg-plant-light px-2 py-0.5 rounded-full">
+                        <span className="text-xs font-medium text-plant-primary bg-plant-light px-2 py-0.5 rounded-full dark:bg-green-900/40 dark:text-green-300">
                           發文者
                         </span>
                       )}
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-gray-400 dark:text-gray-500">
                         {new Date(comment.date).toLocaleDateString('zh-TW')}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{comment.content}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{comment.content}</p>
                     <div className="flex items-center gap-4">
-                      <button className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-500 transition-colors">
+                      <button className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-500 transition-colors dark:text-gray-500">
                         <ThumbsUp size={12} />
                         {comment.likes}
                       </button>
-                      <button className="text-xs text-gray-400 hover:text-plant-primary transition-colors">
+                      <button className="text-xs text-gray-400 hover:text-plant-primary transition-colors dark:text-gray-500 dark:hover:text-green-300">
                         回覆
                       </button>
                     </div>

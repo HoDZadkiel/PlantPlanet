@@ -11,7 +11,7 @@ import { ThemeProvider } from './context/ThemeContext'
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-green-50">
+      <div className="min-h-screen bg-green-50 dark:bg-gray-950">
         <Navbar />
         <main className="pt-16">
           <Routes>

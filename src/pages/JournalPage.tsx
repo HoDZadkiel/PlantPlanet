@@ -72,8 +72,8 @@ const JournalPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">成長日誌</h1>
-          <p className="text-gray-500">記錄植物的成長軌跡與照護歷史</p>
+          <h1 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">成長日誌</h1>
+          <p className="text-gray-500 dark:text-gray-400">記錄植物的成長軌跡與照護歷史</p>
         </div>
         <button
           onClick={() => setShowNewEntry(true)}
@@ -87,16 +87,16 @@ const JournalPage = () => {
       {/* Stats cards */}
       <div className="grid grid-cols-3 gap-4 mb-8">
         <div className="card p-4 text-center">
-          <div className="text-3xl font-bold text-plant-primary mb-1">12</div>
-          <div className="text-xs text-gray-500">追蹤植物</div>
+          <div className="text-3xl font-bold text-plant-primary dark:text-green-300 mb-1">12</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">追蹤植物</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-3xl font-bold text-plant-primary mb-1">47</div>
-          <div className="text-xs text-gray-500">日誌紀錄</div>
+          <div className="text-3xl font-bold text-plant-primary dark:text-green-300 mb-1">47</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">日誌紀錄</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-3xl font-bold text-plant-primary mb-1">156</div>
-          <div className="text-xs text-gray-500">拍攝照片</div>
+          <div className="text-3xl font-bold text-plant-primary dark:text-green-300 mb-1">156</div>
+          <div className="text-xs text-gray-500 dark:text-gray-400">拍攝照片</div>
         </div>
       </div>
 
@@ -113,8 +113,8 @@ const JournalPage = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <div>
-                    <h3 className="font-semibold text-gray-800">{entry.plantName}</h3>
-                    <div className="flex items-center gap-2 text-xs text-gray-400">
+                    <h3 className="font-semibold text-gray-800 dark:text-white">{entry.plantName}</h3>
+                    <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
                       <Calendar size={12} />
                       {new Date(entry.date).toLocaleDateString('zh-TW', {
                         weekday: 'short',
@@ -132,7 +132,7 @@ const JournalPage = () => {
                     {entry.growthStage}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-3">{entry.note}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{entry.note}</p>
                 {entry.images.length > 0 && (
                   <div className="flex gap-2 mb-3">
                     {entry.images.map((img, i) => (
@@ -140,7 +140,7 @@ const JournalPage = () => {
                     ))}
                   </div>
                 )}
-                <div className="flex items-center gap-4 text-xs text-gray-400">
+                <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
                   <span className="flex items-center gap-1">
                     <Camera size={12} />
                     {entry.images.length} 張照片
@@ -160,8 +160,8 @@ const JournalPage = () => {
       {mockEntries.length === 0 && (
         <div className="text-center py-16">
           <div className="text-6xl mb-4">📓</div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">開始你的植物日誌</h3>
-          <p className="text-gray-500 mb-6">用照片和筆記記錄植物的成長旅程。</p>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">開始你的植物日誌</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">用照片和筆記記錄植物的成長旅程。</p>
           <button onClick={() => setShowNewEntry(true)} className="btn-primary">
             建立第一筆紀錄
           </button>
@@ -174,13 +174,13 @@ const JournalPage = () => {
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setShowNewEntry(false)}
         >
-          <div className="bg-white rounded-3xl max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="p-6 border-b border-green-50">
-              <h2 className="text-xl font-bold text-gray-800">新增日誌</h2>
+          <div className="bg-white rounded-3xl max-w-lg w-full dark:bg-gray-800" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6 border-b border-green-50 dark:border-gray-700">
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">新增日誌</h2>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">植物</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">植物</label>
                 <select
                   value={selectedPlant.id}
                   onChange={(e) =>
@@ -196,7 +196,7 @@ const JournalPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">生長階段</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">生長階段</label>
                 <select className="input-field">
                   <option>生長中</option>
                   <option>開花期</option>
@@ -205,21 +205,21 @@ const JournalPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">筆記</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">筆記</label>
                 <textarea
                   placeholder="今天這株植物有什麼狀況？"
                   className="input-field resize-none min-h-[100px]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">照片</label>
-                <div className="border-2 border-dashed border-green-200 rounded-xl p-6 text-center hover:border-plant-primary transition-all cursor-pointer">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">照片</label>
+                <div className="border-2 border-dashed border-green-200 dark:border-gray-600 rounded-xl p-6 text-center hover:border-plant-primary transition-all cursor-pointer">
                   <Camera size={24} className="mx-auto text-gray-400 mb-2" />
-                  <p className="text-sm text-gray-500">點擊上傳或拖放照片</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">點擊上傳或拖放照片</p>
                 </div>
               </div>
             </div>
-            <div className="p-6 border-t border-green-50 flex gap-3">
+            <div className="p-6 border-t border-green-50 dark:border-gray-700 flex gap-3">
               <button onClick={() => setShowNewEntry(false)} className="btn-secondary flex-1">
                 取消
               </button>

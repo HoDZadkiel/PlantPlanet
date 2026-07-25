@@ -24,8 +24,8 @@ const CommunityPage = () => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">社群</h1>
-        <p className="text-gray-500">認識同樣熱愛植物的朋友，向達人學習經驗</p>
+        <h1 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">社群</h1>
+        <p className="text-gray-500 dark:text-gray-400">認識同樣熱愛植物的朋友，向達人學習經驗</p>
       </div>
 
       {/* Stats */}
@@ -33,8 +33,8 @@ const CommunityPage = () => {
         {stats.map((stat) => (
           <div key={stat.label} className="card p-5 text-center">
             <div className="text-3xl mb-2">{stat.icon}</div>
-            <div className="text-2xl font-bold text-plant-primary mb-1">{stat.value}</div>
-            <div className="text-xs text-gray-500">{stat.label}</div>
+            <div className="text-2xl font-bold text-plant-primary dark:text-green-300 mb-1">{stat.value}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -43,7 +43,7 @@ const CommunityPage = () => {
       <section className="mb-10">
         <div className="flex items-center gap-2 mb-6">
           <TrendingUp size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">熱門貢獻者</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">熱門貢獻者</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {topUsers.map((user, index) => (
@@ -73,25 +73,25 @@ const CommunityPage = () => {
                   className="w-14 h-14 rounded-full bg-plant-light border-2 border-white shadow-sm"
                 />
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-800">{user.name}</h3>
-                  <p className="text-xs text-gray-400">加入於 {user.joinedDate}</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-white">{user.name}</h3>
+                  <p className="text-xs text-gray-400 dark:text-gray-500">加入於 {user.joinedDate}</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="text-center p-2 bg-green-50 rounded-xl">
-                  <div className="text-lg font-bold text-plant-primary">{user.plantCount}</div>
-                  <div className="text-xs text-gray-500">植物</div>
+                <div className="text-center p-2 bg-green-50 dark:bg-gray-700 rounded-xl">
+                  <div className="text-lg font-bold text-plant-primary dark:text-green-300">{user.plantCount}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">植物</div>
                 </div>
-                <div className="text-center p-2 bg-blue-50 rounded-xl">
+                <div className="text-center p-2 bg-blue-50 dark:bg-gray-700 rounded-xl">
                   <div className="text-lg font-bold text-blue-600">{user.posts}</div>
-                  <div className="text-xs text-gray-500">貼文</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">貼文</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {user.badges.map((badge) => (
                   <span
                     key={badge}
-                    className="text-xs px-2 py-1 bg-plant-light text-plant-primary rounded-full"
+                    className="text-xs px-2 py-1 bg-plant-light text-plant-primary rounded-full dark:bg-green-900/40 dark:text-green-300"
                   >
                     {badge}
                   </span>
@@ -106,14 +106,14 @@ const CommunityPage = () => {
       <section className="mb-10">
         <div className="flex items-center gap-2 mb-6">
           <Award size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">社群徽章</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">社群徽章</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {badges.map((badge) => (
             <div key={badge.name} className="card p-5 text-center">
               <div className="text-4xl mb-3">{badge.emoji}</div>
-              <h3 className="font-semibold text-gray-800 mb-1">{badge.name}</h3>
-              <p className="text-xs text-gray-500">{badge.description}</p>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-1">{badge.name}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{badge.description}</p>
             </div>
           ))}
         </div>
@@ -123,7 +123,7 @@ const CommunityPage = () => {
       <section>
         <div className="flex items-center gap-2 mb-6">
           <MessageCircle size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">最近動態</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">最近動態</h2>
         </div>
         <div className="space-y-3">
           {[
@@ -164,10 +164,10 @@ const CommunityPage = () => {
             },
           ].map((activity, i) => (
             <div key={i} className="card p-4 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-plant-light flex items-center justify-center text-xl flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-plant-light dark:bg-green-900/40 flex items-center justify-center text-xl flex-shrink-0">
                 {activity.icon}
               </div>
-              <p className="text-sm text-gray-700 flex-1">{activity.text}</p>
+              <p className="text-sm text-gray-700 dark:text-gray-300 flex-1">{activity.text}</p>
               <span className="text-xs text-gray-400 flex-shrink-0">{activity.time}</span>
             </div>
           ))}

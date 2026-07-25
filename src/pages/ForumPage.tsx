@@ -31,8 +31,8 @@ const ForumPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">論壇</h1>
-          <p className="text-gray-500">與植物愛好者交流心得、分享經驗</p>
+          <h1 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">論壇</h1>
+          <p className="text-gray-500 dark:text-gray-400">與植物愛好者交流心得、分享經驗</p>
         </div>
         <button
           onClick={() => setShowNewPost(true)}
@@ -50,7 +50,7 @@ const ForumPage = () => {
           className={`px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
             activeCategory === 'all'
               ? 'bg-plant-primary text-white shadow-sm'
-              : 'bg-white text-gray-600 hover:bg-plant-light hover:text-plant-primary'
+              : 'bg-white text-gray-600 hover:bg-plant-light hover:text-plant-primary dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-300'
           }`}
         >
           全部 ({posts.length})
@@ -62,7 +62,7 @@ const ForumPage = () => {
             className={`px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
               activeCategory === cat.id
                 ? 'bg-plant-primary text-white shadow-sm'
-                : 'bg-white text-gray-600 hover:bg-plant-light hover:text-plant-primary'
+                : 'bg-white text-gray-600 hover:bg-plant-light hover:text-plant-primary dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-300'
             }`}
           >
             {cat.icon} {cat.name} ({cat.postCount})
@@ -84,14 +84,14 @@ const ForumPage = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 sortBy === opt.id
                   ? 'bg-plant-primary text-white'
-                  : 'text-gray-500 hover:text-plant-primary hover:bg-green-50'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-plant-primary hover:bg-green-50 dark:hover:text-green-300 dark:hover:bg-gray-800'
               }`}
             >
               {opt.label}
             </button>
           ))}
         </div>
-        <span className="text-sm text-gray-400">
+        <span className="text-sm text-gray-400 dark:text-gray-500">
           共 {filteredPosts.length} 篇貼文
         </span>
       </div>
@@ -107,19 +107,19 @@ const ForumPage = () => {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 {post.isPinned && (
-                  <span className="flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">
+                  <span className="flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full dark:bg-amber-900/30 dark:text-amber-400">
                     <Pin size={10} />
                     置頂
                   </span>
                 )}
-                <span className="text-xs font-medium text-plant-primary bg-plant-light px-2.5 py-0.5 rounded-full">
+                <span className="text-xs font-medium text-plant-primary bg-plant-light px-2.5 py-0.5 rounded-full dark:bg-green-900/40 dark:text-green-300">
                   {categories.find((c) => c.id === post.category)?.icon}{' '}
                   {categories.find((c) => c.id === post.category)?.name}
                 </span>
               </div>
-              <h3 className="font-semibold text-gray-800 mb-1">{post.title}</h3>
-              <p className="text-sm text-gray-500 mb-3 line-clamp-2">{post.content}</p>
-              <div className="flex items-center gap-4 text-xs text-gray-400">
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-1">{post.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">{post.content}</p>
+              <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
                 <span className="flex items-center gap-1">
                   <span>👤</span>
                   {post.author}
@@ -152,8 +152,8 @@ const ForumPage = () => {
       {filteredPosts.length === 0 && (
         <div className="text-center py-16">
           <div className="text-6xl mb-4">🌿</div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">暫無貼文</h3>
-          <p className="text-gray-500 mb-4">這個分類還沒有貼文，成為第一個發文的人吧！</p>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">暫無貼文</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">這個分類還沒有貼文，成為第一個發文的人吧！</p>
           <button onClick={() => setShowNewPost(true)} className="btn-primary">
             發文
           </button>
@@ -167,15 +167,15 @@ const ForumPage = () => {
           onClick={() => setShowNewPost(false)}
         >
           <div
-            className="bg-white rounded-3xl max-w-lg w-full"
+            className="bg-white rounded-3xl max-w-lg w-full dark:bg-gray-800"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 border-b border-green-50">
-              <h2 className="text-xl font-bold text-gray-800">新貼文</h2>
+            <div className="p-6 border-b border-green-50 dark:border-gray-700">
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">新貼文</h2>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   分類
                 </label>
                 <select className="input-field">
@@ -187,7 +187,7 @@ const ForumPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   標題
                 </label>
                 <input
@@ -197,7 +197,7 @@ const ForumPage = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   內容
                 </label>
                 <textarea
@@ -206,16 +206,16 @@ const ForumPage = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   圖片（選填）
                 </label>
-                <div className="border-2 border-dashed border-green-200 rounded-xl p-6 text-center hover:border-plant-primary transition-all cursor-pointer">
+                <div className="border-2 border-dashed border-green-200 dark:border-gray-600 rounded-xl p-6 text-center hover:border-plant-primary transition-all cursor-pointer">
                   <span className="text-2xl">📷</span>
                   <p className="text-sm text-gray-500 mt-1">點擊上傳或拖放圖片</p>
                 </div>
               </div>
             </div>
-            <div className="p-6 border-t border-green-50 flex gap-3">
+            <div className="p-6 border-t border-green-50 dark:border-gray-700 flex gap-3">
               <button
                 onClick={() => setShowNewPost(false)}
                 className="btn-secondary flex-1"
