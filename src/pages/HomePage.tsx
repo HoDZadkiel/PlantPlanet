@@ -130,7 +130,7 @@ const HomePage = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">熱門貼文</h2>
+            <h2 className="text-3xl font-display font-bold text-gray-800 dark:text-white mb-2">討論熱點</h2>
             <p className="text-gray-500 dark:text-gray-400">看看大家都在討論什麼</p>
           </div>
           <Link to="/forum" className="flex items-center gap-2 text-plant-primary font-medium hover:text-plant-dark dark:text-green-300 dark:hover:text-green-200 transition-colors">
