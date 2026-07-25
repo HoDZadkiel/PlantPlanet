@@ -6,6 +6,12 @@
       "pr": "3",
       "branch": "issue-2-hero-subtitle",
       "processed_at": "2026-07-25"
+    },
+    "5": {
+      "status": "pr-created",
+      "pr": "6",
+      "branch": "issue-5-dark-mode-toggle",
+      "processed_at": "2026-07-25"
     }
   }
 }
