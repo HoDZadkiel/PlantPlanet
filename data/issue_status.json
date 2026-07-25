@@ -1,4 +1,11 @@
 {
   "_note": "Track processed issues to avoid re-processing. Key = issue number.",
-  "processed": {}
+  "processed": {
+    "2": {
+      "status": "pr-created",
+      "pr": "3",
+      "branch": "issue-2-hero-subtitle",
+      "processed_at": "2026-07-25"
+    }
+  }
 }
