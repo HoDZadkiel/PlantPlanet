@@ -28,6 +28,15 @@
       "processed_at": "2026-07-25",
       "merged_at": "2026-07-25",
       "ui_validation": "passed (Vercel Ready confirmed)"
+    },
+    "13": {
+      "status": "merged",
+      "pr": "14",
+      "branch": "issue-13-personal-community-profile",
+      "preview_url": "https://plant-planet-git-issue-13-personal-community-profile-tseng3.vercel.app",
+      "processed_at": "2026-07-25",
+      "merged_at": "2026-07-25",
+      "ui_validation": "passed (local dev verification - all features present)"
     }
   }
 }
