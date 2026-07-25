@@ -34,7 +34,7 @@ const HomePage = () => {
                 與植物愛好者一起<span className="text-green-200">分享成長</span>
               </h1>
               <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
-                加入植物星球社群，分享你的植物照護心得、展示成長成果、學習專業知識，與來自各地的種植者一起交流。
+                加入植物星球社群，與 12,847 位植物愛好者一起成長，分享你的植物照護心得、展示成長成果、學習專業知識，與來自各地的種植者一起交流。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/forum" className="btn-primary inline-flex items-center justify-center gap-2 text-lg py-3 px-8">
