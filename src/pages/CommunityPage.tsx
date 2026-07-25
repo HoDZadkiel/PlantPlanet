@@ -3,29 +3,29 @@ import { topUsers } from '../data/mockData'
 
 const CommunityPage = () => {
   const stats = [
-    { icon: '👥', label: 'Members', value: '12,847' },
-    { icon: '💬', label: 'Messages Today', value: '3,456' },
-    { icon: '🌱', label: 'Plants Shared', value: '892' },
-    { icon: '🤝', label: 'Active Trades', value: '127' },
+    { icon: '👥', label: '成員', value: '12,847' },
+    { icon: '💬', label: '今日留言', value: '3,456' },
+    { icon: '🌱', label: '分享植物', value: '892' },
+    { icon: '🤝', label: '活躍交換', value: '127' },
   ]
 
   const badges = [
-    { emoji: '🌟', name: 'Expert', description: 'Given 100+ helpful answers' },
-    { emoji: '📸', name: 'Showcase Star', description: 'Shared 50+ plant photos' },
-    { emoji: '🤝', name: 'Helper', description: 'Answered 25+ questions' },
-    { emoji: '🌵', name: 'Succulent Expert', description: 'Posted about 30+ succulents' },
-    { emoji: '📚', name: 'Educator', description: 'Written 10+ care guides' },
-    { emoji: '💧', name: 'Humidity Hero', description: 'Master of humidity-loving plants' },
-    { emoji: '🌱', name: 'Seed Starter', description: 'Successfully grew 50+ plants from seed' },
-    { emoji: '🌍', name: 'Global Grower', description: 'Grows plants from 5+ continents' },
+    { emoji: '🌟', name: '植物專家', description: '獲得 100+ 個有用回覆' },
+    { emoji: '📸', name: '攝影達人', description: '分享了 50+ 張植物照片' },
+    { emoji: '🤝', name: '熱心助人', description: '回答了 25+ 個問題' },
+    { emoji: '🌵', name: '多肉達人', description: '分享了 30+ 種多肉植物' },
+    { emoji: '📚', name: '園藝導師', description: '撰寫了 10+ 篇照護指南' },
+    { emoji: '💧', name: '濕度達人', description: '精通高濕度植物的照護' },
+    { emoji: '🌱', name: '種子大師', description: '成功從種子種出 50+ 株植物' },
+    { emoji: '🌍', name: '全球種植者', description: '種植來自 5+ 個大洲的植物' },
   ]
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-['Playfair_Display'] font-bold text-gray-800 mb-2">Community</h1>
-        <p className="text-gray-500">Meet fellow plant lovers and learn from the best</p>
+        <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">社群</h1>
+        <p className="text-gray-500">認識同樣熱愛植物的朋友，向達人學習經驗</p>
       </div>
 
       {/* Stats */}
@@ -43,11 +43,14 @@ const CommunityPage = () => {
       <section className="mb-10">
         <div className="flex items-center gap-2 mb-6">
           <TrendingUp size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">Top Contributors</h2>
+          <h2 className="text-2xl font-bold text-gray-800">熱門貢獻者</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-5">
           {topUsers.map((user, index) => (
-            <div key={user.id} className={`card p-6 ${index === 0 ? 'ring-2 ring-plant-primary' : ''}`}>
+            <div
+              key={user.id}
+              className={`card p-6 ${index === 0 ? 'ring-2 ring-plant-primary' : ''}`}
+            >
               <div className="flex items-center gap-4 mb-4">
                 {index === 0 && (
                   <div className="w-10 h-10 rounded-full bg-plant-primary flex items-center justify-center text-white font-bold text-lg">
@@ -71,22 +74,25 @@ const CommunityPage = () => {
                 />
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-800">{user.name}</h3>
-                  <p className="text-xs text-gray-400">Joined {user.joinedDate}</p>
+                  <p className="text-xs text-gray-400">加入於 {user.joinedDate}</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div className="text-center p-2 bg-green-50 rounded-xl">
                   <div className="text-lg font-bold text-plant-primary">{user.plantCount}</div>
-                  <div className="text-xs text-gray-500">Plants</div>
+                  <div className="text-xs text-gray-500">植物</div>
                 </div>
                 <div className="text-center p-2 bg-blue-50 rounded-xl">
                   <div className="text-lg font-bold text-blue-600">{user.posts}</div>
-                  <div className="text-xs text-gray-500">Posts</div>
+                  <div className="text-xs text-gray-500">貼文</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {user.badges.map((badge) => (
-                  <span key={badge} className="text-xs px-2 py-1 bg-plant-light text-plant-primary rounded-full">
+                  <span
+                    key={badge}
+                    className="text-xs px-2 py-1 bg-plant-light text-plant-primary rounded-full"
+                  >
                     {badge}
                   </span>
                 ))}
@@ -100,7 +106,7 @@ const CommunityPage = () => {
       <section className="mb-10">
         <div className="flex items-center gap-2 mb-6">
           <Award size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">Community Badges</h2>
+          <h2 className="text-2xl font-bold text-gray-800">社群徽章</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {badges.map((badge) => (
@@ -117,17 +123,45 @@ const CommunityPage = () => {
       <section>
         <div className="flex items-center gap-2 mb-6">
           <MessageCircle size={22} className="text-plant-primary" />
-          <h2 className="text-2xl font-bold text-gray-800">Recent Activity</h2>
+          <h2 className="text-2xl font-bold text-gray-800">最近動態</h2>
         </div>
         <div className="space-y-3">
           {[
-            { icon: '🎉', text: 'PlantWhisperer earned the Expert badge', time: '5 min ago' },
-            { icon: '🌱', text: 'SucculentSue added a new plant to their collection', time: '12 min ago' },
-            { icon: '💬', text: 'New discussion: "Best fertilizers for Monstera?"', time: '23 min ago' },
-            { icon: '📸', text: 'FernEnthusiast shared 5 photos of their new fern room', time: '1 hour ago' },
-            { icon: '🤝', text: 'Trade completed: Neon Pothos for Philodendron Birkin', time: '2 hours ago' },
-            { icon: '⭐', text: 'GreenThumbSarah answered 100th question!', time: '3 hours ago' },
-            { icon: '🌿', text: 'New plant guide added: "Care for Calathea Makoyana"', time: '4 hours ago' },
+            {
+              icon: '🎉',
+              text: '園藝老師 Lin 獲得了植物專家徽章',
+              time: '5 分鐘前',
+            },
+            {
+              icon: '🌱',
+              text: '多肉達人阿杰將新植物加入了收藏',
+              time: '12 分鐘前',
+            },
+            {
+              icon: '💬',
+              text: '新討論：「最適合龜背竹的肥料推薦？」',
+              time: '23 分鐘前',
+            },
+            {
+              icon: '📸',
+              text: '蕨類愛好者分享了 5 張新蕨類房間的照片',
+              time: '1 小時前',
+            },
+            {
+              icon: '🤝',
+              text: '交換完成：霓虹綠蘿換白錦蔓綠絨',
+              time: '2 小時前',
+            },
+            {
+              icon: '⭐',
+              text: '陽台園丁回答了第 100 個問題！',
+              time: '3 小時前',
+            },
+            {
+              icon: '🌿',
+              text: '新增植物指南：「竹芋照護全攻略」',
+              time: '4 小時前',
+            },
           ].map((activity, i) => (
             <div key={i} className="card p-4 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-plant-light flex items-center justify-center text-xl flex-shrink-0">

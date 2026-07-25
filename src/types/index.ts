@@ -8,22 +8,22 @@ export interface Plant {
   lightNeeds: string
   tempRange: string
   humidity: string
+  toxicity?: string
   description: string
   tags: string[]
 }
 
 export interface Post {
   id: string
+  category: string
   title: string
   content: string
   author: string
-  avatar: string
-  category: string
-  tags: string[]
-  images?: string[]
-  upvotes: number
-  comments: number
-  timestamp: string
+  authorAvatar: string
+  date: string
+  replies: number
+  likes: number
+  images: string[]
   isPinned?: boolean
 }
 
@@ -53,5 +53,4 @@ export interface ForumCategory {
   icon: string
   description: string
   postCount: number
-  color: string
 }

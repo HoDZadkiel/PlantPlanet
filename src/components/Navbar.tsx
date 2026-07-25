@@ -6,112 +6,173 @@ import { useState } from 'react'
 const Navbar = () => {
   const location = useLocation()
   const { isDark, toggleTheme } = useTheme()
-  const [showSearch, setShowSearch] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
   const navItems = [
-    { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/forum', label: 'Forum', icon: '💬' },
-    { path: '/plants', label: 'Plants', icon: '🌿' },
-    { path: '/journal', label: 'Journal', icon: '📓' },
-    { path: '/community', label: 'Community', icon: '👥' },
+    { path: '/', label: '首頁' },
+    { path: '/forum', label: '論壇' },
+    { path: '/plants', label: '植物圖鑑' },
+    { path: '/journal', label: '成長日誌' },
+    { path: '/community', label: '社群' },
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-b border-green-100 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-3xl">🌍</span>
-            <span className="text-xl font-['Playfair_Display'] font-bold text-plant-primary">PlantPlanet</span>
-          </Link>
+    <>
+      {/* Desktop navbar */}
+      <nav className="hidden md:flex items-center justify-between px-6 lg:px-8 py-4 bg-white/90 backdrop-blur-lg border-b border-green-100 sticky top-0 z-20">
+        <Link to="/" className="flex items-center gap-3">
+          <div className="text-3xl">🌍</div>
+          <div>
+            <div className="text-xl font-bold text-plant-primary">植物星球</div>
+            <div className="text-xs text-gray-400">PlantPlanet</div>
+          </div>
+        </Link>
 
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const isActive = location.pathname === item.path ||
-                (item.path === '/forum' && location.pathname.startsWith('/forum'))
-              return (
+        <div className="flex items-center gap-1 bg-green-50/80 rounded-2xl px-2 py-1.5">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                location.pathname === item.path
+                  ? 'bg-white text-plant-primary shadow-sm'
+                  : 'text-gray-500 hover:text-plant-primary hover:bg-white/60'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="p-2.5 text-gray-400 hover:text-plant-primary hover:bg-green-50 rounded-xl transition-all"
+          >
+            <Search size={20} />
+          </button>
+          <button className="p-2.5 text-gray-400 hover:text-plant-primary hover:bg-green-50 rounded-xl transition-all relative">
+            <Bell size={20} />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="p-2.5 text-gray-400 hover:text-plant-primary hover:bg-green-50 rounded-xl transition-all"
+          >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <Link
+            to="/profile"
+            className="flex items-center gap-2.5 px-4 py-2.5 bg-plant-primary text-white rounded-xl text-sm font-semibold hover:bg-plant-dark transition-all"
+          >
+            <span className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center text-sm">🌱</span>
+            我的植物星球
+          </Link>
+        </div>
+      </nav>
+
+      {/* Mobile navbar */}
+      <nav className="md:hidden flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-lg border-b border-green-100 sticky top-0 z-20">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="text-2xl">🌍</div>
+          <div>
+            <div className="text-lg font-bold text-plant-primary">植物星球</div>
+          </div>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="p-2 text-gray-400 hover:text-plant-primary hover:bg-green-50 rounded-xl transition-all"
+          >
+            <Search size={20} />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-2 text-gray-600 hover:text-plant-primary hover:bg-green-50 rounded-xl transition-all"
+          >
+            <span className="block w-5 h-0.5 bg-current mb-1" />
+            <span className="block w-5 h-0.5 bg-current mb-1" />
+            <span className="block w-4 h-0.5 bg-current ml-auto" />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-30" onClick={() => setMobileMenuOpen(false)}>
+          <div
+            className="absolute right-0 top-0 h-full w-72 bg-white shadow-xl p-6 pt-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="space-y-2">
+              {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? 'bg-plant-primary text-white shadow-sm'
-                      : 'text-gray-600 hover:text-plant-primary hover:bg-plant-light'
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                    location.pathname === item.path
+                      ? 'bg-plant-primary text-white'
+                      : 'text-gray-600 hover:bg-green-50 hover:text-plant-primary'
                   }`}
                 >
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
+                  {item.label}
                 </Link>
-              )
-            })}
-          </div>
+              ))}
+            </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowSearch(!showSearch)}
-              className="p-2.5 rounded-xl text-gray-500 hover:bg-plant-light hover:text-plant-primary transition-all"
-            >
-              <Search size={18} />
-            </button>
-            <button className="relative p-2.5 rounded-xl text-gray-500 hover:bg-plant-light hover:text-plant-primary transition-all">
-              <Bell size={18} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-xl text-gray-500 hover:bg-plant-light hover:text-plant-primary transition-all"
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            <Link
-              to="/profile"
-              className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-plant-light transition-all"
-            >
-              <img
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=User"
-                alt="Profile"
-                className="w-8 h-8 rounded-full bg-plant-light"
-              />
-            </Link>
+            <div className="border-t border-green-100 mt-6 pt-6">
+              <Link
+                to="/profile"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 bg-plant-primary text-white rounded-xl text-sm font-semibold"
+              >
+                <span>🌱</span>
+                我的植物星球
+              </Link>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {showSearch && (
-        <div className="max-w-2xl mx-auto px-4 pb-4">
-          <input
-            type="text"
-            placeholder="Search plants, posts, topics..."
-            className="input-field py-3"
-            autoFocus
-          />
         </div>
       )}
 
-      {/* Mobile nav */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-green-100 z-50">
-        <div className="flex items-center justify-around py-2">
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.path ||
-              (item.path === '/forum' && location.pathname.startsWith('/forum'))
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-xs transition-all ${
-                  isActive
-                    ? 'text-plant-primary'
-                    : 'text-gray-400'
-                }`}
-              >
-                <span className="text-lg">{item.icon}</span>
-                <span>{item.label}</span>
-              </Link>
-            )
-          })}
+      {/* Search overlay */}
+      {searchOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setSearchOpen(false)}>
+          <div className="bg-white rounded-2xl max-w-lg w-full p-4 shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3">
+              <Search className="text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="搜尋植物、貼文、討論..."
+                className="flex-1 text-sm outline-none py-1.5 placeholder:text-gray-400"
+                autoFocus
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating mobile nav */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-green-100 z-10">
+        <div className="flex justify-around py-2">
+          {navItems.slice(0, 4).map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                location.pathname === item.path
+                  ? 'text-plant-primary'
+                  : 'text-gray-400'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
-    </nav>
+    </>
   )
 }
 

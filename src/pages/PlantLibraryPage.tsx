@@ -16,6 +16,19 @@ const PlantLibraryPage = () => {
     return matchesSearch && matchesLevel
   })
 
+  const careLevelLabel = (level: string) => {
+    switch (level) {
+      case 'easy':
+        return '新手友好'
+      case 'medium':
+        return '進階照護'
+      case 'hard':
+        return '挑戰模式'
+      default:
+        return '未知'
+    }
+  }
+
   const careLevelColor = (level: string) => {
     switch (level) {
       case 'easy':
@@ -33,8 +46,8 @@ const PlantLibraryPage = () => {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-['Playfair_Display'] font-bold text-gray-800 mb-2">Plant Library</h1>
-        <p className="text-gray-500">Browse care guides for popular houseplants and outdoor plants</p>
+        <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">植物圖鑑</h1>
+        <p className="text-gray-500">瀏覽常見室內與戶外植物的照護指南</p>
       </div>
 
       {/* Search and filters */}
@@ -43,7 +56,7 @@ const PlantLibraryPage = () => {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           <input
             type="text"
-            placeholder="Search plants by name, type, or tag..."
+            placeholder="搜尋植物名稱、學名或標籤..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="input-field pl-11"
@@ -54,12 +67,12 @@ const PlantLibraryPage = () => {
           <select
             value={filterLevel}
             onChange={(e) => setFilterLevel(e.target.value as any)}
-            className="input-field px-4 py-3 w-32"
+            className="input-field px-4 py-3 w-36"
           >
-            <option value="all">All Levels</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value="all">全部難度</option>
+            <option value="easy">新手友好</option>
+            <option value="medium">進階照護</option>
+            <option value="hard">挑戰模式</option>
           </select>
         </div>
       </div>
@@ -69,14 +82,12 @@ const PlantLibraryPage = () => {
         {filteredPlants.map((plant) => (
           <div key={plant.id} className="card">
             <div className="relative">
-              <img
-                src={plant.image}
-                alt={plant.name}
-                className="w-full h-48 object-cover"
-              />
+              <img src={plant.image} alt={plant.name} className="w-full h-48 object-cover" />
               <div className="absolute top-3 right-3">
-                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${careLevelColor(plant.careLevel)}`}>
-                  {plant.careLevel} care
+                <span
+                  className={`px-2.5 py-1 rounded-full text-xs font-medium ${careLevelColor(plant.careLevel)}`}
+                >
+                  {careLevelLabel(plant.careLevel)}
                 </span>
               </div>
             </div>
@@ -111,7 +122,7 @@ const PlantLibraryPage = () => {
                 onClick={() => setSelectedPlant(plant)}
                 className="w-full flex items-center justify-center gap-2 text-plant-primary font-medium text-sm hover:bg-plant-light rounded-xl py-2.5 transition-all"
               >
-                View Full Guide
+                查看詳細指南
                 <ArrowRight size={14} />
               </button>
             </div>
@@ -123,14 +134,17 @@ const PlantLibraryPage = () => {
       {filteredPlants.length === 0 && (
         <div className="text-center py-16">
           <div className="text-6xl mb-4">🌿</div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">No plants found</h3>
-          <p className="text-gray-500">Try adjusting your search or filters.</p>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">找不到植物</h3>
+          <p className="text-gray-500">試試調整搜尋條件或篩選器。</p>
         </div>
       )}
 
       {/* Plant detail modal */}
       {selectedPlant && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setSelectedPlant(null)}>
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedPlant(null)}
+        >
           <div
             className="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
@@ -143,45 +157,61 @@ const PlantLibraryPage = () => {
             <div className="p-6">
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <h2 className="text-2xl font-['Playfair_Display'] font-bold text-gray-800">{selectedPlant.name}</h2>
-                  <p className="text-sm text-gray-400 italic">{selectedPlant.scientificName}</p>
+                  <h2 className="text-2xl font-display font-bold text-gray-800">
+                    {selectedPlant.name}
+                  </h2>
+                  <p className="text-sm text-gray-400 italic">
+                    {selectedPlant.scientificName}
+                  </p>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${careLevelColor(selectedPlant.careLevel)}`}>
-                  {selectedPlant.careLevel}
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${careLevelColor(
+                    selectedPlant.careLevel
+                  )}`}
+                >
+                  {careLevelLabel(selectedPlant.careLevel)}
                 </span>
               </div>
 
               <p className="text-gray-600 mb-6">{selectedPlant.description}</p>
 
               <div className="space-y-3 mb-6">
-                <h3 className="font-semibold text-gray-800">Care Requirements</h3>
+                <h3 className="font-semibold text-gray-800">照護需求</h3>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex items-center gap-3 p-3 bg-green-50 rounded-xl">
                     <Droplets size={20} className="text-blue-500" />
                     <div>
-                      <div className="text-xs text-gray-500">Water</div>
-                      <div className="text-sm font-medium text-gray-800">{selectedPlant.waterNeeds}</div>
+                      <div className="text-xs text-gray-500">澆水</div>
+                      <div className="text-sm font-medium text-gray-800">
+                        {selectedPlant.waterNeeds}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-amber-50 rounded-xl">
                     <Sun size={20} className="text-amber-500" />
                     <div>
-                      <div className="text-xs text-gray-500">Light</div>
-                      <div className="text-sm font-medium text-gray-800">{selectedPlant.lightNeeds}</div>
+                      <div className="text-xs text-gray-500">光照</div>
+                      <div className="text-sm font-medium text-gray-800">
+                        {selectedPlant.lightNeeds}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-red-50 rounded-xl">
                     <Thermometer size={20} className="text-red-500" />
                     <div>
-                      <div className="text-xs text-gray-500">Temperature</div>
-                      <div className="text-sm font-medium text-gray-800">{selectedPlant.tempRange}</div>
+                      <div className="text-xs text-gray-500">溫度</div>
+                      <div className="text-sm font-medium text-gray-800">
+                        {selectedPlant.tempRange}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl">
                     <Leaf size={20} className="text-green-500" />
                     <div>
-                      <div className="text-xs text-gray-500">Humidity</div>
-                      <div className="text-sm font-medium text-gray-800">{selectedPlant.humidity}</div>
+                      <div className="text-xs text-gray-500">濕度</div>
+                      <div className="text-sm font-medium text-gray-800">
+                        {selectedPlant.humidity}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -193,7 +223,7 @@ const PlantLibraryPage = () => {
                 ))}
               </div>
 
-              <button className="btn-primary w-full">Add to My Collection</button>
+              <button className="btn-primary w-full">加入我的收藏</button>
             </div>
           </div>
         </div>

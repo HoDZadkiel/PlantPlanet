@@ -10,57 +10,57 @@ const JournalPage = () => {
   const mockEntries: JournalEntry[] = [
     {
       id: '1',
-      plantName: 'Monstera Deliciosa',
+      plantName: '龜背竹',
       plantImage: 'https://images.unsplash.com/photo-1614594975525-e45890e74145?w=200&h=200&fit=crop',
       date: '2026-07-23',
-      note: 'First fenestration appeared! The leaf has been developing for weeks and finally split. Humidity has been around 65% thanks to my new humidifier.',
+      note: '第一片葉子出現孔洞了！這片葉子已經長了幾個禮拜，終於裂開了。最近用加濕器，濕度大約保持在 65% 左右。',
       images: [
         'https://images.unsplash.com/photo-1614594975525-e45890e74145?w=600&h=400&fit=crop',
       ],
-      growthStage: 'Growing',
+      growthStage: '生長中',
     },
     {
       id: '2',
-      plantName: 'Pothos',
+      plantName: '綠蘿',
       plantImage: 'https://images.unsplash.com/photo-1596726886612-3c4e7a98e30a?w=200&h=200&fit=crop',
       date: '2026-07-20',
-      note: 'Trimmed back some leggy vines and took 8 cuttings for propagation. Put them in water glasses on the windowsill. Expect roots in 2-3 weeks.',
+      note: '修剪了一些徒長的藤蔓，剪了 8 段來扦插。放在窗台的水杯裡，預計 2-3 週就會長出根系。',
       images: [
         'https://images.unsplash.com/photo-1596726886612-3c4e7a98e30a?w=600&h=400&fit=crop',
       ],
-      growthStage: 'Maintenance',
+      growthStage: '維護中',
     },
     {
       id: '3',
-      plantName: 'Snake Plant',
+      plantName: '虎尾蘭',
       plantImage: 'https://images.unsplash.com/photo-1599598425947-33542758b6a5?w=200&h=200&fit=crop',
       date: '2026-07-15',
-      note: 'Re-potted into a slightly larger container. Soil was completely dry after 3 weeks. This plant really thrives on neglect!',
+      note: '換了比較大一點的花盆。土壤經過三週才完全乾透。這株植物真的是懶人的最佳選擇！',
       images: [],
-      growthStage: 'Stable',
+      growthStage: '穩定期',
     },
     {
       id: '4',
-      plantName: 'Peace Lily',
+      plantName: '白掌',
       plantImage: 'https://images.unsplash.com/photo-1597534154246-1d3ba1b4fb15?w=200&h=200&fit=crop',
       date: '2026-07-12',
-      note: 'Beautiful new bloom coming in! It was drooping yesterday which I knew meant it was thirsty. Gave it a good watering and it perked right up.',
+      note: '又有新的花苞要開了！昨天還垂頭喪氣的，我知道是缺水了。澆完水馬上精神抖擻。',
       images: [
         'https://images.unsplash.com/photo-1597534154246-1d3ba1b4fb15?w=600&h=400&fit=crop',
       ],
-      growthStage: 'Flowering',
+      growthStage: '開花期',
     },
   ]
 
   const growthStageColor = (stage: string) => {
     switch (stage) {
-      case 'Growing':
+      case '生長中':
         return 'bg-green-100 text-green-700'
-      case 'Flowering':
+      case '開花期':
         return 'bg-purple-100 text-purple-700'
-      case 'Maintenance':
+      case '維護中':
         return 'bg-blue-100 text-blue-700'
-      case 'Stable':
+      case '穩定期':
         return 'bg-gray-100 text-gray-700'
       default:
         return 'bg-gray-100 text-gray-700'
@@ -72,15 +72,15 @@ const JournalPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-['Playfair_Display'] font-bold text-gray-800 mb-2">Plant Journal</h1>
-          <p className="text-gray-500">Track your plants' growth and care history</p>
+          <h1 className="text-3xl font-display font-bold text-gray-800 mb-2">成長日誌</h1>
+          <p className="text-gray-500">記錄植物的成長軌跡與照護歷史</p>
         </div>
         <button
           onClick={() => setShowNewEntry(true)}
           className="btn-primary flex items-center gap-2"
         >
           <Plus size={18} />
-          <span className="hidden sm:inline">New Entry</span>
+          <span className="hidden sm:inline">新增紀錄</span>
         </button>
       </div>
 
@@ -88,15 +88,15 @@ const JournalPage = () => {
       <div className="grid grid-cols-3 gap-4 mb-8">
         <div className="card p-4 text-center">
           <div className="text-3xl font-bold text-plant-primary mb-1">12</div>
-          <div className="text-xs text-gray-500">Plants Tracked</div>
+          <div className="text-xs text-gray-500">追蹤植物</div>
         </div>
         <div className="card p-4 text-center">
           <div className="text-3xl font-bold text-plant-primary mb-1">47</div>
-          <div className="text-xs text-gray-500">Journal Entries</div>
+          <div className="text-xs text-gray-500">日誌紀錄</div>
         </div>
         <div className="card p-4 text-center">
           <div className="text-3xl font-bold text-plant-primary mb-1">156</div>
-          <div className="text-xs text-gray-500">Photos Logged</div>
+          <div className="text-xs text-gray-500">拍攝照片</div>
         </div>
       </div>
 
@@ -116,7 +116,7 @@ const JournalPage = () => {
                     <h3 className="font-semibold text-gray-800">{entry.plantName}</h3>
                     <div className="flex items-center gap-2 text-xs text-gray-400">
                       <Calendar size={12} />
-                      {new Date(entry.date).toLocaleDateString('en-US', {
+                      {new Date(entry.date).toLocaleDateString('zh-TW', {
                         weekday: 'short',
                         month: 'short',
                         day: 'numeric',
@@ -124,7 +124,11 @@ const JournalPage = () => {
                       })}
                     </div>
                   </div>
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${growthStageColor(entry.growthStage)}`}>
+                  <span
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium ${growthStageColor(
+                      entry.growthStage
+                    )}`}
+                  >
                     {entry.growthStage}
                   </span>
                 </div>
@@ -132,23 +136,18 @@ const JournalPage = () => {
                 {entry.images.length > 0 && (
                   <div className="flex gap-2 mb-3">
                     {entry.images.map((img, i) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt=""
-                        className="w-20 h-20 object-cover rounded-lg"
-                      />
+                      <img key={i} src={img} alt="" className="w-20 h-20 object-cover rounded-lg" />
                     ))}
                   </div>
                 )}
                 <div className="flex items-center gap-4 text-xs text-gray-400">
                   <span className="flex items-center gap-1">
                     <Camera size={12} />
-                    {entry.images.length} photo{entry.images.length !== 1 ? 's' : ''}
+                    {entry.images.length} 張照片
                   </span>
                   <span className="flex items-center gap-1">
                     <TrendingUp size={12} />
-                    View growth chart
+                    查看成長趨勢
                   </span>
                 </div>
               </div>
@@ -161,62 +160,71 @@ const JournalPage = () => {
       {mockEntries.length === 0 && (
         <div className="text-center py-16">
           <div className="text-6xl mb-4">📓</div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">Start your plant journal</h3>
-          <p className="text-gray-500 mb-6">Document your plants' growth journey with photos and notes.</p>
-          <button onClick={() => setShowNewEntry(true)} className="btn-primary">Create First Entry</button>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">開始你的植物日誌</h3>
+          <p className="text-gray-500 mb-6">用照片和筆記記錄植物的成長旅程。</p>
+          <button onClick={() => setShowNewEntry(true)} className="btn-primary">
+            建立第一筆紀錄
+          </button>
         </div>
       )}
 
       {/* New entry modal */}
       {showNewEntry && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowNewEntry(false)}>
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowNewEntry(false)}
+        >
           <div className="bg-white rounded-3xl max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
             <div className="p-6 border-b border-green-50">
-              <h2 className="text-xl font-bold text-gray-800">New Journal Entry</h2>
+              <h2 className="text-xl font-bold text-gray-800">新增日誌</h2>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Plant</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">植物</label>
                 <select
                   value={selectedPlant.id}
-                  onChange={(e) => setSelectedPlant(plants.find(p => p.id === e.target.value) || plants[0])}
+                  onChange={(e) =>
+                    setSelectedPlant(plants.find((p) => p.id === e.target.value) || plants[0])
+                  }
                   className="input-field"
                 >
                   {plants.map((plant) => (
-                    <option key={plant.id} value={plant.id}>{plant.name}</option>
+                    <option key={plant.id} value={plant.id}>
+                      {plant.name}
+                    </option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Growth Stage</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">生長階段</label>
                 <select className="input-field">
-                  <option>Growing</option>
-                  <option>Flowering</option>
-                  <option>Maintenance</option>
-                  <option>Stable</option>
+                  <option>生長中</option>
+                  <option>開花期</option>
+                  <option>維護中</option>
+                  <option>穩定期</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Note</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">筆記</label>
                 <textarea
-                  placeholder="What's happening with this plant today?"
+                  placeholder="今天這株植物有什麼狀況？"
                   className="input-field resize-none min-h-[100px]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Photos</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">照片</label>
                 <div className="border-2 border-dashed border-green-200 rounded-xl p-6 text-center hover:border-plant-primary transition-all cursor-pointer">
                   <Camera size={24} className="mx-auto text-gray-400 mb-2" />
-                  <p className="text-sm text-gray-500">Click to upload or drag and drop</p>
+                  <p className="text-sm text-gray-500">點擊上傳或拖放照片</p>
                 </div>
               </div>
             </div>
             <div className="p-6 border-t border-green-50 flex gap-3">
               <button onClick={() => setShowNewEntry(false)} className="btn-secondary flex-1">
-                Cancel
+                取消
               </button>
               <button onClick={() => setShowNewEntry(false)} className="btn-primary flex-1">
-                Save Entry
+                儲存紀錄
               </button>
             </div>
           </div>
